@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="FatSubs.Pages.MenuPage"
+	Title="Menu">
+	<ContentPage.Content>
+		<ListView BindingContext="{Binding Model, Mode=TwoWay}"
+			ItemsSource="{Binding Menu, Mode=TwoWay}" HasUnevenRows="true" Footer="">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout HorizontalOptions="FillAndExpand">
+							<Image Source="{Binding Image}" />
+
+							<StackLayout Padding="15,0,0,5">
+								<Label Text="{Binding Name}" VerticalOptions="Fill" FontSize="20" FontAttributes="Bold"/>
+								<Label Text="{Binding Price, StringFormat='Price: {0:C}'}" VerticalOptions="Fill"/>
+								<Label Text="{Binding Description}" VerticalOptions="FillAndExpand"/>
+							</StackLayout>
+
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
+</ContentPage>
