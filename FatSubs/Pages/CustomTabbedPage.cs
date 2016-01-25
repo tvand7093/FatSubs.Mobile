@@ -16,7 +16,7 @@ namespace FatSubs.Pages
 		{
 			base.OnAppearing ();
 			//trigger fetching of data.
-			MessagingCenter.Send (BindingContext as AllDetailsViewModel, AllDetailsViewModel.FetchDataMessage);
+			(BindingContext as AllDetailsViewModel).RefreshCommand.Execute(null);
 		}
 
 		public CustomTabbedPage ()

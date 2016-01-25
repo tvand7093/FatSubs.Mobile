@@ -4,8 +4,11 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	x:Class="FatSubs.Pages.StaffPage" Title="Staff" >
 	<ContentPage.Content>
-		<ListView BindingContext="{Binding Model, Mode=TwoWay}"
-			ItemsSource="{Binding Staff, Mode=TwoWay}" HasUnevenRows="true" Footer="">
+		<ListView 
+			IsPullToRefreshEnabled="true"
+			RefreshCommand="{Binding RefreshCommand, Mode=TwoWay}"
+			IsRefreshing="{Binding Refreshing, Mode=TwoWay}"
+			ItemsSource="{Binding Model.Staff, Mode=TwoWay}" HasUnevenRows="true" Footer="">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<TextCell Text="{Binding Name}" Detail="{Binding Position, StringFormat='Position: {0}'}" />
