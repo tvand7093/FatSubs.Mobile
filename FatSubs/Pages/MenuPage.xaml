@@ -11,7 +11,7 @@
 				<DataTemplate>
 					<ViewCell>
 						<StackLayout HorizontalOptions="FillAndExpand">
-							<Image Source="{Binding Image}" />
+							<Image Source="{Binding ImageUrl}" />
 
 							<StackLayout Padding="15,0,0,5">
 								<Label Text="{Binding Name}" VerticalOptions="Fill" FontSize="20" FontAttributes="Bold"/>

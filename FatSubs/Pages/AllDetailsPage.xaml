@@ -3,83 +3,27 @@
 	xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	x:Class="FatSubs.Pages.AllDetailsPage"
-	Title="Details" Padding="10,5,0,0">
-	<ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Label" x:Key="Title">
-				<Setter Property="FontSize" Value="20" />
-				<Setter Property="FontAttributes" Value="Bold" />
-				<Setter Property="TextColor" Value="Blue" />
-			</Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+	Title="Details">
 	<ContentPage.Content>
-		<ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-			<StackLayout 
-				Spacing="10"
-				Padding="10,5,0,0"
-				BindingContext="{Binding Model, Mode=TwoWay}"
-				VerticalOptions="FillAndExpand" 
-				HorizontalOptions="FillAndExpand">
-
-				<Label Text="Business Name" Style="{StaticResource Title}"/>
-				<Label Text="{Binding Name}" />
-
-				<Label Text="Location Name" Style="{StaticResource Title}" />
-				<Label Text="{Binding Location.Name}" />
-
-				<Label Text="Location Address" Style="{StaticResource Title}" />
-				<Label Text="{Binding Location.Address}" />
-
-				<Label Text="GPS Coordinates" Style="{StaticResource Title}" />
-				<Label Text="{Binding Location.GeoLocation}" />
-
-				<Label Text="Hours" Style="{StaticResource Title}"/>
-				<Grid HorizontalOptions="FillAndExpand" BindingContext="{Binding Hours, Mode=TwoWay}">
-					<Grid.RowDefinitions>
-						<RowDefinition />
-						<RowDefinition />
-						<RowDefinition />
-						<RowDefinition />
-						<RowDefinition />
-						<RowDefinition />
-						<RowDefinition />
-						<RowDefinition />
-					</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="*" />
-					</Grid.ColumnDefinitions>
-					<Grid.Style>
-						<ResourceDictionary>
-							<Style TargetType="Label" x:Key="Test">
-								<Setter Property="HorizontalTextAlignment" Value="Center" />
-							</Style>
-						</ResourceDictionary>
-					</Grid.Style>
-
-					<Label Grid.Row="0" Grid.Column="0" Text="Day of the week" FontAttributes="Bold"/>
-					<Label Grid.Row="0" Grid.Column="1" Text="Hours" FontAttributes="Bold"/>
-
-					<Label Grid.Row="1" Grid.Column="0" Text="Monday" />
-					<Label Grid.Row="2" Grid.Column="0" Text="Tuesday" />
-					<Label Grid.Row="3" Grid.Column="0" Text="Wednesday" />
-					<Label Grid.Row="4" Grid.Column="0" Text="Thursday" />
-					<Label Grid.Row="5" Grid.Column="0" Text="Friday" />
-					<Label Grid.Row="6" Grid.Column="0" Text="Saturday" />
-					<Label Grid.Row="7" Grid.Column="0" Text="Sunday" />
-
-					<Label Grid.Row="1" Grid.Column="1" Text="{Binding Monday}" />
-					<Label Grid.Row="2" Grid.Column="1" Text="{Binding Tuesday}" />
-					<Label Grid.Row="3" Grid.Column="1" Text="{Binding Wednesday}" />
-					<Label Grid.Row="4" Grid.Column="1" Text="{Binding Thursday}" />
-					<Label Grid.Row="5" Grid.Column="1" Text="{Binding Friday}" />
-					<Label Grid.Row="6" Grid.Column="1" Text="{Binding Saturday}" />
-					<Label Grid.Row="7" Grid.Column="1" Text="{Binding Sunday}" />
-				</Grid>
-
-
-			</StackLayout>
-		</ScrollView>
+		<TableView 
+			Intent="Form"
+			BindingContext="{Binding Model, Mode=TwoWay}">
+			<TableRoot>
+				<TableSection Title="Business Info">
+					<TextCell Text="{Binding Name, StringFormat='Business Name: {0}'}"/>
+				</TableSection>
+				<TableSection BindingContext="{Binding Hours}" Title="Weekday's">
+					<TextCell Text="{Binding Monday, StringFormat='Monday: {0}'}"/>
+					<TextCell Text="{Binding Tuesday, StringFormat='Tuesday: {0}'}"/>
+					<TextCell Text="{Binding Wednesday, StringFormat='Wednesday: {0}'}"/>
+					<TextCell Text="{Binding Thursday, StringFormat='Thursday: {0}'}"/>
+					<TextCell Text="{Binding Friday, StringFormat='Friday: {0}'}"/>
+				</TableSection>
+				<TableSection BindingContext="{Binding Hours}" Title="Weekend's">
+					<TextCell Text="{Binding Saturday, StringFormat='Saturday: {0}'}"/>
+					<TextCell Text="{Binding Sunday, StringFormat='Sunday: {0}'}"/>
+				</TableSection>
+			</TableRoot>
+		</TableView>
 	</ContentPage.Content>
 </ContentPage>

@@ -23,9 +23,10 @@ namespace FatSubs.Pages
 		{
 			BindingContext = new AllDetailsViewModel ();
 
-			Children.Add (new AllDetailsPage ());
-			Children.Add (new StaffPage ());
 			Children.Add (new MenuPage ());
+			Children.Add (new AllDetailsPage ());
+			Children.Add (new MapPage ());
+			Children.Add (new StaffPage ());
 		}
 	}
 }
