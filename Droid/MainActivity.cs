@@ -10,7 +10,10 @@ using Android.OS;
 
 namespace FatSubs.Droid
 {
-	[Activity (Label = "FatSubs.Droid", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity (Label = "Fat Subs",
+		Icon = "@drawable/icon",
+		MainLauncher = true,
+		ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
 	{
 		protected override void OnCreate (Bundle bundle)
@@ -18,7 +21,7 @@ namespace FatSubs.Droid
 			base.OnCreate (bundle);
 
 			global::Xamarin.Forms.Forms.Init (this, bundle);
-
+			Xamarin.FormsMaps.Init (this, bundle);
 			LoadApplication (new App ());
 		}
 	}
